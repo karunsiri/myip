@@ -6,15 +6,11 @@
   let commandBox, widgetBox, compositePath, commandStr;
   let path
   let ipQuery, portQuery
-  let ipCheckBox, portCheckBox, portInput
   let ip = ''
 
   window.onload = (event) => {
      commandBox = document.getElementById('command');
      widgetBox = document.getElementById('output');
-     ipCheckBox = document.getElementById('ipCheckBox')
-     portCheckBox = document.getElementById('portCheckBox')
-     portInput = document.getElementById('portInput')
      reset()
      setcommdStr()
      changeInput("ip")
@@ -35,24 +31,12 @@
   function changeInput(input, button) {
     path = input
     portQuery = ""
-    portInput.classList.add("hidden");
     switch(path) {
       case "json":
         output.innerText = jsonObj
         break
       case "country-iso":
         output.innerText = data["country_iso"]
-        break
-      case "port":
-        portInput.classList.remove("hidden");
-        path = "port";
-        output.innerText = "{}";
-        let currentPort = document.querySelector("#portInput").value;
-        updatePort(currentPort);
-        break
-      case "ip":
-        output.innerText = data["ip"]
-        path = ""
         break
       default:
         output.innerText = data[path]
